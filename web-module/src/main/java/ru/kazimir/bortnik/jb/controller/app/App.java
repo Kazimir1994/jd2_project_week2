@@ -21,9 +21,7 @@ public class App {
         DocumentController documentController = context.getBean(DocumentController.class);
 
         DocumentDTO returnedDocumentDTO = documentController.add(documentDTO);
-
         DocumentDTO foundDocumentDTO = documentController.getDocumentById(returnedDocumentDTO.getId());
-
         documentController.delete(foundDocumentDTO.getId());
     }
 }
