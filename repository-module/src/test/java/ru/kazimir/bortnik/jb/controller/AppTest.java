@@ -1,4 +1,4 @@
-package ru.kazimir.bortnik;
+package ru.kazimir.bortnik.jb.controller;
 
 import static org.junit.Assert.assertTrue;
 
