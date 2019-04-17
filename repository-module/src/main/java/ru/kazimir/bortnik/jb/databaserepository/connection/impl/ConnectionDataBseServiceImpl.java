@@ -53,10 +53,7 @@ public class ConnectionDataBseServiceImpl implements ConnectionDataBseService {
 
     @PostConstruct
     public void initializeDatabase() {
-
         File configurationFile = new File(getClass().getResource("/" + databaseProperties.getDatabaseConfigName()).getPath());
-
-
         if (configurationFile.exists()) {
             List<String> SetOfScripts = returnASetOfScripts(configurationFile);
             try (Connection connection = getConnection()) {
@@ -76,15 +73,12 @@ public class ConnectionDataBseServiceImpl implements ConnectionDataBseService {
     }
 
     private List<String> returnASetOfScripts(File nameFile) {
-
         StringBuilder dataFile = new StringBuilder();
         List<String> commandList = new ArrayList<>();
         boolean commandStartKey = false;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(nameFile))) {
-
             String dataLine = bufferedReader.readLine();
             if (dataLine != null) {
-
                 if (dataLine.contains("CREATE TABLE") || dataLine.contains("INSERT INTO") || dataLine.contains("DROP TABLE")) {
                     commandStartKey = true;
                     dataFile.append(dataLine).append('\n');
@@ -112,9 +106,7 @@ public class ConnectionDataBseServiceImpl implements ConnectionDataBseService {
             }
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            e.printStackTrace();
         }
-
         return commandList;
     }
 }
